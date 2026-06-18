@@ -10,176 +10,173 @@
 
     body {
       font-family: Arial, sans-serif;
-      background: radial-gradient(circle at top, #36005c, #050008 65%);
       color: #fff;
-      text-align: center;
-      min-height: 100vh;
+      background:
+        radial-gradient(circle at top, rgba(0,255,255,.25), transparent 28%),
+        radial-gradient(circle at 80% 20%, rgba(255,0,255,.25), transparent 30%),
+        radial-gradient(circle at bottom, rgba(255,215,0,.18), transparent 35%),
+        #030008;
       overflow-x: hidden;
     }
 
-    .bg {
-      position: fixed;
-      inset: 0;
+    .page {
+      max-width: 520px;
+      margin: auto;
+      padding: 24px 16px 32px;
+      text-align: center;
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .pill {
+      flex: 1;
+      padding: 11px 8px;
+      border: 1px solid #00eaff;
+      border-radius: 18px;
+      color: #00eaff;
+      font-weight: 900;
+      font-size: 13px;
+      box-shadow: 0 0 16px #00eaff;
+      background: rgba(0,0,0,.55);
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 900;
+      color: #fff;
+      margin: 12px 0;
+      text-shadow: 0 0 18px #00eaff;
+    }
+
+    .logo span {
+      color: #ff2cff;
+      font-style: italic;
+    }
+
+    .hero {
+      position: relative;
+      padding: 28px 12px 16px;
+      border-radius: 32px;
+      background: linear-gradient(180deg, rgba(16,0,45,.9), rgba(0,0,0,.85));
+      border: 2px solid rgba(0,234,255,.6);
+      box-shadow: 0 0 30px rgba(255,0,255,.5);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -40px;
       background:
-        radial-gradient(circle at 20% 20%, rgba(255,0,255,.35), transparent 25%),
-        radial-gradient(circle at 80% 15%, rgba(0,255,220,.25), transparent 25%),
-        radial-gradient(circle at 50% 90%, rgba(255,215,0,.25), transparent 30%);
-      z-index: -3;
+        radial-gradient(circle, rgba(255,215,0,.85) 1px, transparent 3px),
+        radial-gradient(circle, rgba(0,234,255,.75) 1px, transparent 3px),
+        radial-gradient(circle, rgba(255,0,255,.75) 1px, transparent 3px);
+      background-size: 70px 70px, 110px 110px, 150px 150px;
+      opacity: .35;
+      animation: move 12s linear infinite;
     }
 
-    .coins {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        radial-gradient(circle, #ffd700 3px, transparent 4px),
-        radial-gradient(circle, #00ffe7 2px, transparent 3px),
-        radial-gradient(circle, #ff00ff 2px, transparent 3px);
-      background-size: 90px 90px, 130px 130px, 170px 170px;
-      opacity: .22;
-      z-index: -2;
-      animation: float 10s linear infinite;
-    }
-
-    @keyframes float {
+    @keyframes move {
       from { transform: translateY(0); }
       to { transform: translateY(80px); }
     }
 
-    .page {
-      width: 100%;
-      max-width: 480px;
-      margin: auto;
-      padding: 38px 18px 28px;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 10px 20px;
-      border: 1px solid #00ffd5;
-      border-radius: 30px;
-      color: #00ffd5;
-      font-weight: 900;
-      letter-spacing: 2px;
-      font-size: 13px;
-      margin-bottom: 24px;
-      box-shadow: 0 0 18px #00ffd5;
-      background: rgba(0,0,0,.45);
-    }
-
-    h1 {
-      font-size: 48px;
-      line-height: .95;
-      font-weight: 900;
-      color: #ffe600;
-      text-shadow:
-        0 0 12px #ff00ff,
-        0 0 24px #00eaff,
-        0 0 42px #ffe600;
-      margin-bottom: 12px;
-    }
-
-    .subtitle {
-      letter-spacing: 5px;
-      color: #ddd;
-      font-size: 12px;
-      margin-bottom: 22px;
-    }
-
     .god {
-      width: 275px;
-      height: 275px;
-      margin: 8px auto 26px;
+      position: relative;
+      z-index: 1;
+      width: 230px;
+      height: 230px;
+      margin: auto;
       border-radius: 50%;
       background:
-        radial-gradient(circle at 50% 38%, #fff1a8 0%, #ffcc00 18%, #9b00ff 52%, #030005 76%);
+        radial-gradient(circle at 50% 30%, #fff6a6 0%, #ffd700 22%, #a600ff 50%, #00142d 78%);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 125px;
+      font-size: 108px;
       box-shadow:
         0 0 25px #ffe600,
-        0 0 45px #ff00ff,
+        0 0 50px #ff00ff,
         0 0 70px #00eaff;
+    }
+
+    .title {
       position: relative;
-    }
-
-    .god::before {
-      content: "⚡";
-      position: absolute;
-      left: 28px;
-      top: 28px;
-      font-size: 46px;
-      color: #00eaff;
-      text-shadow: 0 0 20px #00eaff;
-    }
-
-    .god::after {
-      content: "💵";
-      position: absolute;
-      right: 25px;
-      bottom: 28px;
-      font-size: 42px;
-      filter: blur(.3px);
-    }
-
-    .card {
-      padding: 26px 18px;
-      border: 2px solid #ffe600;
-      border-radius: 28px;
-      background: rgba(0,0,0,.62);
-      box-shadow:
-        0 0 25px rgba(255,0,255,.75),
-        inset 0 0 20px rgba(255,255,255,.05);
-      margin-bottom: 24px;
-    }
-
-    .card small {
-      color: #00ffd5;
-      letter-spacing: 3px;
+      z-index: 1;
+      margin-top: 22px;
+      font-size: 48px;
+      line-height: .9;
       font-weight: 900;
+      color: #ffd700;
+      text-shadow:
+        0 0 10px #ff00ff,
+        0 0 24px #00eaff;
     }
 
-    .big {
-      font-size: 36px;
-      font-weight: 900;
-      margin: 12px 0;
-      color: #ffe600;
-      text-shadow: 0 0 18px #ff00ff;
+    .title small {
+      display: block;
+      color: #fff;
+      font-size: 38px;
+      text-shadow: 0 0 16px #00eaff;
     }
 
-    .mystery {
-      font-size: 17px;
-      line-height: 1.5;
-      color: #f2f2f2;
-      margin-bottom: 18px;
-    }
-
-    .benefits {
-      list-style: none;
+    .sub {
+      position: relative;
+      z-index: 1;
+      margin-top: 15px;
       font-size: 18px;
-      line-height: 1.9;
-      font-weight: 700;
+      font-weight: 800;
+      color: #00eaff;
+    }
+
+    .box {
+      margin-top: 24px;
+      padding: 24px 16px;
+      border: 2px solid #ff2cff;
+      border-radius: 26px;
+      background: rgba(0,0,0,.78);
+      box-shadow: 0 0 24px rgba(255,0,255,.65);
+    }
+
+    .box small {
+      color: #00ffe1;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .box h2 {
+      margin: 12px 0;
+      font-size: 36px;
+      color: #ffd700;
+      text-shadow: 0 0 15px #ff00ff;
+    }
+
+    .box p {
+      font-size: 18px;
+      line-height: 1.45;
+      color: #eee;
     }
 
     .btn {
+      margin: 22px auto 8px;
+      width: 100%;
+      padding: 18px 12px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #16c95d, #39ff7a);
+      color: #fff;
+      font-size: 22px;
+      font-weight: 900;
+      text-decoration: none;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 12px;
-      width: 100%;
-      padding: 21px 18px;
-      margin: 22px auto;
-      border-radius: 50px;
-      background: linear-gradient(135deg, #17c964, #26ff7a);
-      color: white;
-      text-decoration: none;
-      font-size: 23px;
-      font-weight: 900;
-      box-shadow:
-        0 0 22px #17c964,
-        0 0 42px rgba(38,255,122,.45);
-      animation: pulse 1.8s infinite;
+      box-shadow: 0 0 25px #19ff72;
     }
 
     .wa {
@@ -188,73 +185,104 @@
       fill: white;
     }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.035); }
-      100% { transform: scale(1); }
+    .icons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .icon {
+      padding: 15px 8px;
+      border-radius: 18px;
+      background: rgba(0,0,0,.72);
+      border: 1px solid #00eaff;
+      box-shadow: 0 0 14px rgba(0,234,255,.45);
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    .icon b {
+      display: block;
+      font-size: 28px;
+      margin-bottom: 6px;
     }
 
     .trust {
-      color: #bbb;
+      margin-top: 18px;
+      padding: 12px;
+      border-radius: 18px;
+      background: rgba(0,0,0,.55);
+      color: #00ffe1;
+      font-weight: 800;
       font-size: 14px;
-      line-height: 1.7;
-      margin-top: 14px;
     }
 
     .footer {
-      margin-top: 24px;
-      font-size: 13px;
+      margin-top: 20px;
       color: #aaa;
+      font-size: 13px;
     }
   </style>
 </head>
 
 <body>
-  <div class="bg"></div>
-  <div class="coins"></div>
-
   <main class="page">
-    <div class="badge">● ATENCIÓN 24HS · ARGENTINA</div>
 
-    <h1>RED<br>CORONA BET</h1>
-    <div class="subtitle">ENTRETENIMIENTO ONLINE</div>
+    <div class="top">
+      <div class="pill">🎧 ATENCIÓN 24HS</div>
+      <div class="pill">🇦🇷 ARGENTINA</div>
+    </div>
 
-    <div class="god">👑</div>
+    <div class="logo">CP CORONA <span>BET</span></div>
 
-    <section class="card">
-      <small>REGALO DE BIENVENIDA</small>
-      <div class="big">USUARIO GANADOR</div>
+    <section class="hero">
+      <div class="god">👑</div>
 
-      <p class="mystery">
-        Hay beneficios activos para usuarios nuevos.  
-        Tocá el botón y reclamá tu regalo de bienvenida antes de que cierre la promo.
-      </p>
+      <h1 class="title">
+        RED
+        <small>CORONA</small>
+        BET
+      </h1>
 
-      <ul class="benefits">
-        <li>⚡ Atención 24hs</li>
-        <li>💸 Pagos en el acto</li>
-        <li>🚀 Sin cronograma</li>
-        <li>🏆 Retiros ilimitados</li>
-      </ul>
+      <div class="sub">ENTRETENIMIENTO ONLINE PREMIUM</div>
     </section>
 
-    <a class="btn"
-      href="https://wa.me/573003302268?text=Hola%20quiero%20reclamar%20mi%20regalo%20de%20bienvenida%20y%20activar%20mi%20usuario%20ganador">
-      
-      <svg class="wa" viewBox="0 0 32 32">
-        <path d="M16.04 3C9.39 3 4 8.39 4 15.04c0 2.12.56 4.19 1.62 6.02L4 29l8.14-1.55c1.75.95 3.72 1.45 5.9 1.45C24.68 28.9 30 23.58 30 16.93S22.69 3 16.04 3zm0 22.9c-1.78 0-3.48-.48-4.97-1.38l-.36-.22-4.83.92.93-4.7-.24-.38A9.94 9.94 0 0 1 6.99 15.04C6.99 10.04 11.04 6 16.04 6c4.99 0 10.97 5.94 10.97 10.93 0 5-5.98 8.97-10.97 8.97zm5.47-6.73c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.68-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5s1.07 2.9 1.22 3.1c.15.2 2.1 3.2 5.1 4.48.71.31 1.27.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/>
-      </svg>
+    <section class="box">
+      <small>BENEFICIOS PARA NUEVOS USUARIOS</small>
+      <h2>ACTIVÁ TU USUARIO</h2>
 
-      USUARIO GANADOR
-    </a>
+      <p>
+        Consultá por los beneficios de bienvenida disponibles para vos.
+        Atención personalizada, rápida y segura.
+      </p>
+
+      <a class="btn"
+        href="https://wa.me/573003302268?text=Hola%20quiero%20consultar%20por%20los%20beneficios%20de%20bienvenida%20disponibles%20y%20activar%20mi%20usuario">
+        
+        <svg class="wa" viewBox="0 0 32 32">
+          <path d="M16.04 3C9.39 3 4 8.39 4 15.04c0 2.12.56 4.19 1.62 6.02L4 29l8.14-1.55c1.75.95 3.72 1.45 5.9 1.45C24.68 28.9 30 23.58 30 16.93S22.69 3 16.04 3zm0 22.9c-1.78 0-3.48-.48-4.97-1.38l-.36-.22-4.83.92.93-4.7-.24-.38A9.94 9.94 0 0 1 6.99 15.04C6.99 10.04 11.04 6 16.04 6c4.99 0 10.97 5.94 10.97 10.93 0 5-5.98 8.97-10.97 8.97zm5.47-6.73c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.68-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.5s1.07 2.9 1.22 3.1c.15.2 2.1 3.2 5.1 4.48.71.31 1.27.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/>
+        </svg>
+
+        CONSULTAR BENEFICIOS
+      </a>
+    </section>
+
+    <section class="icons">
+      <div class="icon"><b>⚡</b>Pagos en el acto</div>
+      <div class="icon"><b>🗓️</b>Sin cronograma</div>
+      <div class="icon"><b>🎧</b>Atención 24hs</div>
+      <div class="icon"><b>💸</b>Retiros ilimitados</div>
+    </section>
 
     <div class="trust">
-      🎁 Beneficio de bienvenida · Atención personalizada · Activación rápida
+      ⚡ Rápido · 🛡️ Seguro · ✅ Atención personalizada
     </div>
 
     <div class="footer">
-      RED CORONA BET · Una red con prestigio
+      RED CORONA BET · Entretenimiento online
     </div>
+
   </main>
 </body>
 </html>
