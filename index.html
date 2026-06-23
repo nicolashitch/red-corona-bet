@@ -25,107 +25,162 @@
       min-height: 100vh;
       background-image: url("telegram.jpg");
       background-size: cover;
-      background-position: center top;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: center;
-      padding: 0 22px 38px;
-    }
-
-    .telegram-btn {
-      position: relative;
-      width: 100%;
-      max-width: 390px;
-      height: 72px;
-      border-radius: 22px;
-      background: linear-gradient(135deg, #00c6ff, #0072ff, #8a2be2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      color: white;
-      text-decoration: none;
-      font-size: 22px;
-      font-weight: 900;
-      letter-spacing: 1px;
-      box-shadow:
-        0 0 18px #00c6ff,
-        0 0 42px rgba(0, 198, 255, 0.75),
-        inset 0 0 14px rgba(255, 255, 255, 0.35);
-      border: 2px solid rgba(255,255,255,0.65);
-      animation: pulse 1.8s infinite;
+      background-position: center center;
+      background-repeat: no-repeat;
       overflow: hidden;
     }
 
-    .telegram-btn::before {
-      content: "";
+    .telegram-float {
       position: absolute;
-      top: 0;
-      left: -80%;
-      width: 60%;
-      height: 100%;
-      background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255,255,255,0.7),
-        transparent
-      );
-      animation: shine 2.4s infinite;
+      left: 50%;
+      bottom: 58px;
+      transform: translateX(-50%);
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2aabee, #0088cc, #7b2cff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow:
+        0 0 22px #00c6ff,
+        0 0 55px rgba(0, 198, 255, 0.9),
+        inset 0 0 18px rgba(255,255,255,0.4);
+      border: 3px solid rgba(255,255,255,0.8);
+      animation: floatMove 4s ease-in-out infinite, pulseGlow 1.8s ease-in-out infinite;
+      z-index: 10;
     }
 
-    .telegram-icon {
-      width: 44px;
-      height: 44px;
+    .telegram-float::before {
+      content: "";
+      position: absolute;
+      width: 138px;
+      height: 138px;
       border-radius: 50%;
+      border: 2px solid rgba(0,198,255,0.55);
+      animation: ringPulse 2s infinite;
+    }
+
+    .telegram-float::after {
+      content: "";
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.65), transparent);
+      opacity: 0.45;
+      animation: rotateShine 3s linear infinite;
+      z-index: -1;
+    }
+
+    .telegram-logo {
+      width: 58px;
+      height: 58px;
       background: white;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #229ed9;
-      font-size: 28px;
-      font-weight: bold;
+      font-size: 36px;
+      font-weight: 900;
+      padding-right: 3px;
       box-shadow: 0 0 18px rgba(255,255,255,0.9);
     }
 
-    .telegram-text {
-      z-index: 2;
+    .label {
+      position: absolute;
+      left: 50%;
+      bottom: 26px;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px #000;
+      z-index: 9;
+      white-space: nowrap;
     }
 
     .notice {
-      margin-top: 16px;
-      color: rgba(255,255,255,0.85);
-      font-size: 13px;
+      position: absolute;
+      left: 50%;
+      bottom: 8px;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.78);
+      font-size: 11px;
       letter-spacing: 1px;
       text-shadow: 0 0 8px #000;
+      z-index: 9;
+      white-space: nowrap;
     }
 
-    @keyframes pulse {
+    @keyframes floatMove {
       0%, 100% {
-        transform: scale(1);
+        transform: translateX(-50%) translateY(0);
+      }
+      25% {
+        transform: translateX(-43%) translateY(-12px);
       }
       50% {
-        transform: scale(1.045);
+        transform: translateX(-50%) translateY(-22px);
+      }
+      75% {
+        transform: translateX(-57%) translateY(-12px);
       }
     }
 
-    @keyframes shine {
+    @keyframes pulseGlow {
+      0%, 100% {
+        box-shadow:
+          0 0 22px #00c6ff,
+          0 0 55px rgba(0, 198, 255, 0.9),
+          inset 0 0 18px rgba(255,255,255,0.4);
+      }
+      50% {
+        box-shadow:
+          0 0 36px #00c6ff,
+          0 0 85px rgba(0, 198, 255, 1),
+          inset 0 0 24px rgba(255,255,255,0.55);
+      }
+    }
+
+    @keyframes ringPulse {
       0% {
-        left: -80%;
+        transform: scale(0.85);
+        opacity: 0.95;
       }
       100% {
-        left: 130%;
+        transform: scale(1.28);
+        opacity: 0;
       }
     }
 
-    @media (max-height: 700px) {
-      .landing {
-        padding-bottom: 24px;
+    @keyframes rotateShine {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .telegram-float {
+        width: 98px;
+        height: 98px;
+        bottom: 54px;
       }
 
-      .telegram-btn {
-        height: 64px;
-        font-size: 19px;
+      .telegram-logo {
+        width: 52px;
+        height: 52px;
+        font-size: 32px;
+      }
+
+      .telegram-float::before {
+        width: 122px;
+        height: 122px;
       }
     }
   </style>
@@ -133,11 +188,11 @@
 
 <body>
   <main class="landing">
-    <a class="telegram-btn" href="https://t.me/Eliamcorona" target="_blank">
-      <div class="telegram-icon">➤</div>
-      <div class="telegram-text">INGRESAR POR TELEGRAM</div>
+    <a class="telegram-float" href="https://t.me/Eliamcorona" target="_blank" aria-label="Ingresar por Telegram">
+      <div class="telegram-logo">➤</div>
     </a>
 
+    <div class="label">TOCÁ EL LOGO PARA INGRESAR</div>
     <div class="notice">+18 · ENTRETENIMIENTO RESPONSABLE</div>
   </main>
 </body>
