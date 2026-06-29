@@ -24,7 +24,6 @@
     <img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=2175374529986376&ev=PageView&noscript=1"/>
   </noscript>
-  <!-- End Meta Pixel Code -->
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -48,21 +47,21 @@
       overflow: hidden;
     }
 
-    .telegram-float {
+    .whatsapp-float {
       position: fixed;
       left: 40px;
       top: 40px;
       width: 92px;
       height: 92px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #2aabee, #0088cc, #7b2cff);
+      background: linear-gradient(135deg, #25D366, #128C7E, #00ff88);
       display: flex;
       align-items: center;
       justify-content: center;
       text-decoration: none;
       box-shadow:
-        0 0 22px #00c6ff,
-        0 0 55px rgba(0, 198, 255, 0.9),
+        0 0 22px #25D366,
+        0 0 55px rgba(37, 211, 102, 0.9),
         inset 0 0 18px rgba(255,255,255,0.4);
       border: 3px solid rgba(255,255,255,0.85);
       z-index: 20;
@@ -70,17 +69,17 @@
       animation: pulseGlow 1.8s ease-in-out infinite;
     }
 
-    .telegram-float::before {
+    .whatsapp-float::before {
       content: "";
       position: absolute;
       width: 118px;
       height: 118px;
       border-radius: 50%;
-      border: 2px solid rgba(0,198,255,0.55);
+      border: 2px solid rgba(37,211,102,0.55);
       animation: ringPulse 2s infinite;
     }
 
-    .telegram-logo {
+    .whatsapp-logo {
       width: 52px;
       height: 52px;
       background: white;
@@ -88,10 +87,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #229ed9;
-      font-size: 34px;
+      color: #128C7E;
+      font-size: 31px;
       font-weight: 900;
-      padding-right: 3px;
       box-shadow: 0 0 18px rgba(255,255,255,0.9);
       z-index: 2;
     }
@@ -127,25 +125,25 @@
       position: fixed;
       width: 6px;
       height: 6px;
-      background: #00c6ff;
+      background: #25D366;
       border-radius: 50%;
       pointer-events: none;
       z-index: 999;
-      box-shadow: 0 0 12px #00c6ff;
+      box-shadow: 0 0 12px #25D366;
       animation: explode 700ms ease-out forwards;
     }
 
     @keyframes pulseGlow {
       0%, 100% {
         box-shadow:
-          0 0 22px #00c6ff,
-          0 0 55px rgba(0, 198, 255, 0.9),
+          0 0 22px #25D366,
+          0 0 55px rgba(37, 211, 102, 0.9),
           inset 0 0 18px rgba(255,255,255,0.4);
       }
       50% {
         box-shadow:
-          0 0 36px #00c6ff,
-          0 0 85px rgba(0, 198, 255, 1),
+          0 0 36px #25D366,
+          0 0 85px rgba(37, 211, 102, 1),
           inset 0 0 24px rgba(255,255,255,0.55);
       }
     }
@@ -161,9 +159,9 @@
     }
 
     @media (max-width: 480px) {
-      .telegram-float { width: 74px; height: 74px; }
-      .telegram-logo { width: 42px; height: 42px; font-size: 28px; }
-      .telegram-float::before { width: 96px; height: 96px; }
+      .whatsapp-float { width: 74px; height: 74px; }
+      .whatsapp-logo { width: 42px; height: 42px; font-size: 26px; }
+      .whatsapp-float::before { width: 96px; height: 96px; }
       .label { font-size: 11px; }
       .notice { font-size: 9px; }
     }
@@ -172,12 +170,11 @@
 
 <body>
   <main class="landing">
-    <a class="telegram-float"
-       id="telegramButton"
-       href="https://t.me/red_corona_asistente_bot?start=meta"
-       target="_blank"
-       aria-label="Ingresar por Telegram">
-      <div class="telegram-logo">➤</div>
+    <a class="whatsapp-float"
+       id="whatsappButton"
+       href="#"
+       aria-label="Ingresar por WhatsApp">
+      <div class="whatsapp-logo">☎</div>
     </a>
 
     <div class="label">TOCÁ EL LOGO PARA INGRESAR</div>
@@ -185,7 +182,11 @@
   </main>
 
   <script>
-    const button = document.getElementById("telegramButton");
+    const button = document.getElementById("whatsappButton");
+
+    const whatsappNumber = "573000000000";
+    const message = "Hola, quiero recibir información de Red Corona Bett";
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
     let x = 40;
     let y = 40;
@@ -212,12 +213,22 @@
     moveButton();
 
     button.addEventListener("click", function(event) {
+      event.preventDefault();
+
       if (typeof fbq === "function") {
         fbq("track", "Lead");
-        fbq("trackCustom", "TelegramClick");
+        fbq("track", "Contact");
+        fbq("trackCustom", "WhatsAppClick", {
+          source: "landing",
+          channel: "whatsapp"
+        });
       }
 
       createExplosion(event.clientX, event.clientY);
+
+      setTimeout(() => {
+        window.location.href = whatsappUrl;
+      }, 350);
     });
 
     function createExplosion(centerX, centerY) {
